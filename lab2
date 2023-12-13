@@ -8,20 +8,20 @@ int main() {
 
     int arr[3] = {0};   
 
-    int* iPointer = &i; 
+    int* iPointer = &i; //объявляем указатель на целое число iPointer и присваиваем ему адрес переменной i.
 
-    number = *iPointer; 
+    number = *iPointer; // присваиваем значение, которое хранится по адресу iPointer
 
-    *iPointer = 15;     
+    *iPointer = 15; // значение 15 присваивается переменной, на которую указывает iPointer    
 
-    iPointer = &arr[0]; 
+    iPointer = &arr[0]; // присваиваем iPointer первому элементу массива
 
-    iPointer += 2;      
+    iPointer += 2;  //увеличиваем значение на 2 (сдвигаем на 2 элемента массива)    
 
-    arr[0] = 5;         
+    arr[0] = 5;    // первому элементу присваивается значение 5, а тому на который указывает iPointer - 6 (третьему)
     *iPointer = 6;      
 
-    std::cout << "i: " << i << std::endl;
+    std::cout << "i: " << i << std::endl;                //вывод
     std::cout << "number: " << number << std::endl;
     std::cout << "arr[0]: " << arr[0] << std::endl;
     std::cout << "arr[2]: " << arr[2] << std::endl;
