@@ -1,0 +1,80 @@
+#include <stdlib.h>
+#include <iostream>
+
+// Определяется структура с двумя целочисленными переменными
+struct TwoInts
+{
+    int a;
+    int b;
+};
+
+// Определеняется структура с массивом и поинтером
+struct StructWithArray
+{
+    int arr[4];
+    int* someNumber;
+};
+
+int main()
+{
+    // Инициализация структуры TwoInts
+    TwoInts i2 = { };
+    i2.a = 5;
+    i2.b = 7;
+
+    // Вывод значений из структуры TwoInts (5 7)
+    std::cout << i2.a << std::endl;
+    std::cout << i2.b << std::endl;
+    
+    // Инициализация структуры StructWithArray и присвоение значения элементу массива
+    StructWithArray s = { };
+    s.arr[0] = 10;
+
+    // Инициализация еще одной структуры StructWithArray и присвоение значения элементу массива
+    StructWithArray s1 = { };
+    s1.arr[0] = 15;
+
+    // Инициализация указателя на структуру и изменение значения элемента массива через указатель
+    StructWithArray* sPointer = &s;
+    sPointer->arr[0] = 20;
+
+    // Вывод значений из массива структуры s (20)
+    std::cout << s.arr[0] << std::endl;
+
+    // Изменение значения элемента массива в структуре s
+    s.arr[0] = 25;
+    std::cout << s.arr[0] << std::endl; //выведет 25
+
+    // Изменение значения элемента массива через указатель на структуру
+    sPointer->arr[0] = 30;
+    std::cout << s.arr[0] << std::endl; //выведеь 30
+
+    // Переназначение указателя на другую структуру и изменение значения массива
+    sPointer = &s1;
+    sPointer->arr[0] = 35; //s1.arr[0] теперь = 35
+
+    // Вывод значений массивов из структур s и s1
+    std::cout << s.arr[0] << std::endl;
+    std::cout << s1.arr[0] << std::endl; //выведет 30 и 35
+
+    // Инициализация массива из структур и присвоение значения элементу массива
+    StructWithArray structArray[2] = { };
+    structArray[0].arr[3] = 77;
+
+    // Присвоение указателю значение адреса элемента массива в другой структуре
+    structArray[1].someNumber = &structArray[0].arr[3];
+
+    // Инициализация указателя и присвоение значения через указатель
+    sPointer = &s;
+    int* pointer = &sPointer->arr[3];
+    s.arr[3] = 72;
+
+    // Вывод значения, на которое указывает указатель. Выведет 72
+    std::cout << *pointer;
+
+    // Инициализация структуры и заполнение её нулями
+    StructWithArray memory;
+    memset(&memory, 0, sizeof(StructWithArray));
+
+    return 0;
+}
